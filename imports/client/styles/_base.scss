@@ -36,3 +36,8 @@ input[type=text], input[type=email], input[type=password] {
   margin-bottom: $space;
   padding: $input-spacing;
 }
+
+.error {
+  color: red;
+  font-style: italic;
+}
