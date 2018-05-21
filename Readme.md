@@ -1,2 +1,3 @@
-# Boilerplate Meteor Project
-A basic React and auth Meteor setup.
+# MyFetchers - Reach the Unreachable 🌐
+
+  🌍 🌎 🌏
