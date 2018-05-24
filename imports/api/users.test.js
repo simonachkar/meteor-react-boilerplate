@@ -1,6 +1,6 @@
 import {Meteor} from 'meteor/meteor';
 import {validateNewUser} from './users';
-
+import {expect} from 'chai';
 
 if (Meteor.isServer) {
     describe('users', function () {

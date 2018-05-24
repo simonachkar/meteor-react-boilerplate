@@ -15,4 +15,4 @@
  Routing between components implemented using React Routes
 
 ### Testing
-A complete test environment is set up, with Mocha and Chai. The libraries used are `cultofcoders:mocha` and `practicalmeteor:chai`. Some basic test cases including user validation are implemented in `users.test.js`. 
+A complete test environment is set up, with **Mocha** and **Chai**. The driver-package used is `cultofcoders:mocha`. Some basic test cases including user validation are implemented in `users.test.js`. 
