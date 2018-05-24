@@ -1,8 +1,9 @@
 {
-  "name": "short-lnk",
+  "name": "meteor-react-boilerplate",
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor run",
+    "test": "meteor test --driver-package=cultofcoders:mocha"
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.42",
