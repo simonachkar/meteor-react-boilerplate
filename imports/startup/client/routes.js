@@ -1,11 +1,13 @@
+/* Using React-Router v3 */
+
 import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import { Router, Route, browserHistory } from 'react-router';
 
-import Signup from '../ui/Signup';
-import Dashboard from '../ui/Dashboard';
-import NotFound from '../ui/NotFound';
-import Login from '../ui/Login';
+import Signup from '../../ui/Signup';
+import Dashboard from '../../ui/Dashboard';
+import NotFound from '../../ui/NotFound';
+import Login from '../../ui/Login';
 
 const unauthenticatedPages = ['/', '/signup'];
 const authenticatedPages = ['/dashboard'];
