@@ -4,10 +4,10 @@ import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import { Router, Route, browserHistory } from 'react-router';
 
-import Signup from '../../ui/Signup';
-import Dashboard from '../../ui/Dashboard';
-import NotFound from '../../ui/NotFound';
-import Login from '../../ui/Login';
+import Signup from '../../ui/pages/Signup';
+import Dashboard from '../../ui/pages/Dashboard';
+import NotFound from '../../ui/pages/NotFound';
+import Login from '../../ui/pages/Login';
 
 const unauthenticatedPages = ['/', '/signup'];
 const authenticatedPages = ['/dashboard'];

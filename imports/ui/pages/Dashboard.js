@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PrivateHeader from './PrivateHeader';
+import PrivateHeader from './../components/PrivateHeader';
 
 export default () => (
   <div>
