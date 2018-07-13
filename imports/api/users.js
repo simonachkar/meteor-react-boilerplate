@@ -2,7 +2,7 @@ import { Accounts } from 'meteor/accounts-base';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 
-export const validateNewUser = (user) => {
+const validateNewUser = (user) => {
   const email = user.emails[0].address;
 
 
@@ -17,6 +17,29 @@ export const validateNewUser = (user) => {
   return true;
 };
 
-if (Meteor.isServer) {
-  Accounts.validateNewUser(validateNewUser);
-}
+Meteor.methods({
+  'users.create': function (email, password, fields) {
+    new SimpleSchema({
+      firstName: {
+        type: String,
+      },
+      lastName: {
+        type: String,
+      },
+    }).validate({
+      ...fields,
+    });
+
+    const userId = Accounts.createUser({ email, password });
+
+    Accounts.validateNewUser(validateNewUser);
+
+    Meteor.users.update(userId, {
+      $set: {
+        ...fields,
+      },
+    });
+
+    return userId;
+  },
+});

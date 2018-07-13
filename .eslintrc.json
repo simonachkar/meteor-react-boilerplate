@@ -20,6 +20,7 @@
     "prefer-destructuring": 0,
     "arrow-body-style": ["error", "as-needed"],
     "consistent-return": 0,
+    "func-names": ["error", "never"],
     "react/jsx-filename-extension": 0,
     "jsx-a11y/anchor-is-valid": 0,
     "react/jsx-no-bind": [

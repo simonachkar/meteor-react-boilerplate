@@ -2,15 +2,30 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Meteor } from 'meteor/meteor';
 import { PulseLoader } from 'react-spinners';
+import { TextField, Typography, Grid, Button } from '@material-ui/core';
+import { gStyles } from '../Styles';
+
+const styles = {
+  button: {
+    margin: 20,
+    marginLeft: 60,
+    marginRight: 60,
+  },
+  title: {
+    color: gStyles.palette.primary.main,
+    fontWeight: 'bold',
+    margin: 10,
+  },
+};
 
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.email = React.createRef();
-    this.password = React.createRef();
     this.state = {
       error: '',
       loading: false,
+      email: '',
+      password: '',
     };
   }
   onSubmit(e) {
@@ -21,8 +36,8 @@ export default class Login extends React.Component {
       loading: true,
     });
 
-    const email = this.email.current.value.trim();
-    const password = this.password.current.value.trim();
+    const email = this.state.email;
+    const password = this.state.password;
 
     Meteor.loginWithPassword(email, password, (err) => {
       if (err) {
@@ -39,24 +54,57 @@ export default class Login extends React.Component {
     });
   }
 
+  handleChange(name, event) {
+    this.setState({
+      [name]: event.target.value,
+    });
+  }
+
   render() {
     return (
-      <div className="boxed-view">
-        <div className="boxed-view__box ">
-          <h1>Login</h1>
+      <div style={gStyles.boxedView}>
+        <div style={gStyles.boxedView__box}>
+          <Typography variant="title" color="inherit" style={styles.title}>
+          Login
+          </Typography>
           <PulseLoader
             color="#426cb4"
             loading={this.state.loading}
             size={10}
             margin="5px"
           />
-          {this.state.error ? <p className="error">{this.state.error}</p> : undefined}
-          <form onSubmit={this.onSubmit.bind(this)} noValidate className="boxed-view__form">
-            <input type="email" ref={this.email} name="email" placeholder="Email" />
-            <input type="password" ref={this.password} name="password" placeholder="Password" />
-            <button className="button">Login</button>
+          {this.state.error ?
+            <Typography style={gStyles.error}>{this.state.error}</Typography> : undefined}
+          <form noValidate>
+            <Grid
+              container
+              spacing={8}
+              direction="column"
+              justify="space-between"
+            >
+              <TextField
+                id="email"
+                label="Email"
+                value={this.state.email}
+                onChange={e => this.handleChange('email', e)}
+                margin="normal"
+                required
+              />
+              <TextField
+                id="password"
+                label="Password"
+                type="password"
+                value={this.state.password}
+                onChange={e => this.handleChange('password', e)}
+                margin="normal"
+                required
+              />
+              <Button variant="contained" color="primary" style={styles.button} onClick={this.onSubmit.bind(this)}>
+                Login
+              </Button>
+            </Grid>
           </form>
-          <Link to="/signup">Need an account?</Link>
+          <Link to="/signup"><Button>Need an account?</Button></Link>
         </div>
       </div>
     );
