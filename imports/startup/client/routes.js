@@ -4,7 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import { Router, Route, browserHistory } from 'react-router';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { gStyles } from '../../ui/Styles';
+import { gStyles } from '../../ui/styles/Styles';
 
 import Signup from '../../ui/pages/Signup';
 import Dashboard from '../../ui/pages/Dashboard';

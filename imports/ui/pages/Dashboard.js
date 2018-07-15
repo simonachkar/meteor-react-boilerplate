@@ -1,12 +1,12 @@
 import React from 'react';
 
-import PrivateHeader from './../components/PrivateHeader';
+import Header from './../common/Header';
 
 export default () => (
   <div>
-    <PrivateHeader title="Dashboard" />
-    <div className="page-content">
-                Dashboard page content.
+    <Header title="Dashboard" />
+    <div>
+      Dashboard page content.
     </div>
   </div>
 );

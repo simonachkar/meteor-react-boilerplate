@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { Meteor } from 'meteor/meteor';
-import { PulseLoader } from 'react-spinners';
-import { TextField, Typography, Grid, Button } from '@material-ui/core';
-import { gStyles } from '../Styles';
+import { TextField, Typography, Grid, Button, CircularProgress } from '@material-ui/core';
+import { gStyles } from '../styles/Styles';
 
 const styles = {
   button: {
@@ -15,6 +14,15 @@ const styles = {
     color: gStyles.palette.primary.main,
     fontWeight: 'bold',
     margin: 10,
+  },
+  progress: {
+    margin: 10,
+  },
+  invisible: {
+    position: 'absolute',
+    left: '-9999px',
+    width: '1px',
+    height: '1px',
   },
 };
 
@@ -67,15 +75,10 @@ export default class Login extends React.Component {
           <Typography variant="title" color="inherit" style={styles.title}>
           Login
           </Typography>
-          <PulseLoader
-            color="#426cb4"
-            loading={this.state.loading}
-            size={10}
-            margin="5px"
-          />
+          { this.state.loading && <CircularProgress size={30} style={styles.progress} /> }
           {this.state.error ?
             <Typography style={gStyles.error}>{this.state.error}</Typography> : undefined}
-          <form noValidate>
+          <form onSubmit={this.onSubmit.bind(this)} noValidate>
             <Grid
               container
               spacing={8}
@@ -98,6 +101,11 @@ export default class Login extends React.Component {
                 onChange={e => this.handleChange('password', e)}
                 margin="normal"
                 required
+              />
+              <input
+                type="submit"
+                style={styles.invisible}
+                tabIndex="-1"
               />
               <Button variant="contained" color="primary" style={styles.button} onClick={this.onSubmit.bind(this)}>
                 Login
