@@ -9,10 +9,12 @@
   * Login
   * Singup
   * Dashboard
-  * PrivateHeader
-  * PrivateHeader
+  * Header
 
  Routing between components implemented using React Routes
+
+### Design
+Material-UI 
 
 ### Testing
 A complete test environment is set up, with **Mocha** and **Chai**. The driver-package used is `cultofcoders:mocha`. Some basic test cases including user validation are implemented in `users.test.js`.
